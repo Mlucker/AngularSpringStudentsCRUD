@@ -1,0 +1,54 @@
+<button (click)="toggleStudentJson()">{{isStudentJsonOpen ? "Close Json" : "Open Json"}}</button>
+
+<form [formGroup]="studentForm" *ngIf="studentForm" (submit)="createStudent()">
+
+  <div>
+    <label>Nachname:</label>
+    <input type="text" formControlName="nachname">
+  </div>
+
+  <div>
+    <label>Vorname:</label>
+    <input type="text" formControlName="vorname">
+  </div>
+
+  <div>
+    <label>Geburtsdatum:</label>
+    <input type="datetime-local" formControlName="geburtsdatum">
+  </div>
+
+  <div *ngIf="this.editedStudent">
+    <label>Studiengang:</label>
+    <select formControlName="studiengang">
+      <option [ngValue]="null">kein Studiengang</option>
+      <option *ngFor="let studiengang of studiengaenge" [ngValue]="studiengang">
+        {{ studiengang.id }} - {{studiengang.studiengang}}
+      </option>
+    </select>
+  </div>
+
+  <div *ngIf="this.editedStudent">
+    <label>Kurse:</label>
+    <div *ngFor="let kurs of kurse; let i=index">
+      <label>
+        <input type="checkbox" [value]="kurs.id" (change)="onCheckboxChange($event)"
+               [checked]="createAndReturnKurseIDArray().indexOf(kurs.id) > -1">
+        {{kurs.id}} - {{kurs.kursname}}
+      </label>
+    </div>
+  </div>
+
+  <div *ngIf="this.editedStudent">
+    <label>Spind:</label>
+    <select formControlName="spind">
+      <option [ngValue]="null">kein Spind</option>
+      <option *ngFor="let spind of createUnusedSpindeArray()" [ngValue]="spind">
+        {{ spind.id }}
+      </option>
+    </select>
+  </div>
+
+  <p *ngIf="isStudentJsonOpen">Form Value: {{ studentForm.value | json }}</p>
+
+  <button type="submit">Create Student</button>
+</form>

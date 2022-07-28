@@ -1,0 +1,17 @@
+<h3>Noten:</h3>
+<p>Objekte anklicken, um Details zu oeffnen.</p>
+<app-note-item
+  *ngFor="let note of noten"
+  [note]="note"
+  (deleteEvent)="deleteNote($event)"
+  (editEvent)="editNote($event)"
+></app-note-item>
+
+<h3>Noten anlegen und updaten:</h3>
+<button (click)="toggleForm()">{{isFormOpen ? "Close Form": "Open Form"}}</button>
+<app-note-form
+  *ngIf="isFormOpen"
+  (createEvent)="createNote($event)"
+  (updateEvent)="updateNote($event)"
+  [editedNote]="editedNote"
+></app-note-form>

@@ -1,0 +1,43 @@
+<button (click)="toggleNoteJson()">{{isNoteJsonOpen ? "Close Json" : "Open Json"}}</button>
+
+<form [formGroup]="noteForm" *ngIf="noteForm" (submit)="createNote()">
+
+  <div>
+    <label>Note:</label>
+    <input type="number" formControlName="note">
+    <span *ngIf="gettingControl && (gettingControl['note'].touched)
+     && gettingControl['note'].errors?.['required']">
+      note is required</span>
+  </div>
+
+  <div>
+    <label>Kurs:</label>
+    <div>
+      <select formControlName="kurs">
+        <option *ngFor="let kurs of kurse" [ngValue]="kurs">
+          {{ kurs.id }} - {{kurs.kursname}}
+        </option>
+      </select>
+      <span *ngIf="gettingControl && (gettingControl['kurs'].touched)
+       && gettingControl['kurs'].errors?.['required']">
+                                kurs is required</span>
+    </div>
+
+    <label>Student:</label>
+    <div>
+      <select formControlName="student">
+        <option *ngFor="let student of students" [ngValue]="student">
+          {{ student.id }} - {{student.nachname}} - {{student.vorname}}
+        </option>
+      </select>
+      <span *ngIf="gettingControl && (gettingControl['student'].touched)
+       && gettingControl['student'].errors?.['required']">
+                                student is required</span>
+    </div>
+
+  </div>
+
+  <p *ngIf="isNoteJsonOpen">Form Value: {{ noteForm.value | json }}</p>
+
+  <button type="submit" [disabled]="noteForm.invalid">Create Note</button>
+</form>

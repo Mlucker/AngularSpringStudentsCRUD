@@ -1,0 +1,13 @@
+<button (click)="toggleKursJson()">{{isKursJsonOpen ? "Close Json" : "Open Json"}}</button>
+
+<form [formGroup]="kursForm" *ngIf="kursForm" (submit)="createKurs()">
+
+  <div>
+    <label>Kurs:</label>
+    <input type="text" formControlName="kurs">
+  </div>
+
+  <p *ngIf="isKursJsonOpen">Form Value: {{ kursForm.value | json }}</p>
+
+  <button type="submit">Create/Update Kurs</button>
+</form>

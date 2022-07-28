@@ -1,0 +1,15 @@
+<h3>Note Details</h3>
+<div *ngIf="note">
+  <div>
+    Note-ID: {{note.id}}
+  </div>
+  <div>
+    Note: {{note.note}}
+  </div>
+  <div *ngIf="note.student">
+    Student: {{note.student.id}} {{note.student.vorname}} {{note.student.nachname}}
+  </div>
+  <div *ngIf="note.kurs">
+    Kurs: {{note.kurs.id}} {{note.kurs.kursname}}
+  </div>
+</div>

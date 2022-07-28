@@ -1,0 +1,14 @@
+<div *ngIf="student" style="border-style: solid; margin: 5px">
+  <div [routerLink]="['/studentDetails', student.id]">
+    <div>
+      Student-Id:{{student.id}} Nachname: {{student.nachname}} Vorname: {{student.vorname}}
+    </div>
+
+    <div *ngIf="student?.spind">
+      Spind-Id:{{student.spind?.id}}
+    </div>
+
+  </div>
+  <button (click)="editStudent()">Edit</button>
+  <button (click)="deleteStudent()">Delete</button>
+</div>

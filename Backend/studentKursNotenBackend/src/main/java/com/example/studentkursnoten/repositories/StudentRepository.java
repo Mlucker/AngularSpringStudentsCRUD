@@ -1,0 +1,7 @@
+package com.example.studentkursnoten.repositories;
+
+import com.example.studentkursnoten.entities.Student;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface StudentRepository extends JpaRepository<Student, Long> {
+}

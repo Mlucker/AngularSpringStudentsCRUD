@@ -1,0 +1,9 @@
+<div *ngIf="student"  style="border-style: solid; margin: 5px">
+  <div [routerLink]="['/studentDetails', student.id]">
+    <div>
+      {{student.id}} - {{student.nachname}} - {{student.vorname}}
+    </div>
+  </div>
+  <button (click)="editStudent()">Edit</button>
+  <button (click)="deleteStudent()">Delete</button>
+</div>

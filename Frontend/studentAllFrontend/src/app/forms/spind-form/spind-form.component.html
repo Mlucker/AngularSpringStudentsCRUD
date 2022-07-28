@@ -1,0 +1,14 @@
+<button (click)="toggleSpindJson()">{{isSpindJsonOpen ? "Close Json" : "Open Json"}}</button>
+
+<form [formGroup]="spindForm" *ngIf="spindForm" (submit)="createSpind()">
+
+  <div>
+    <label>Spindraum:</label>
+    <input type="number" formControlName="spindraum">
+  </div>
+
+  <p *ngIf="isSpindJsonOpen">Form Value: {{ spindForm.value | json }}</p>
+  <p *ngIf="isSpindJsonOpen">Database Value: {{ this.editedSpind | json }}</p>
+
+  <button type="submit">Create/Update Spind</button>
+</form>

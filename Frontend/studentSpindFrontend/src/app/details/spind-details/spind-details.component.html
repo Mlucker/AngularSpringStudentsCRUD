@@ -1,0 +1,12 @@
+<h3>Spind Details</h3>
+<div *ngIf="spind">
+  <div>
+    Spind-Id: {{spind.id}}
+  </div>
+  <div>
+    Spindraum: {{spind.spindraum}}
+  </div>
+  <div>
+    Student: {{spind.student?.id}} - {{spind.student?.nachname}} - {{spind.student?.vorname}}
+  </div>
+</div>

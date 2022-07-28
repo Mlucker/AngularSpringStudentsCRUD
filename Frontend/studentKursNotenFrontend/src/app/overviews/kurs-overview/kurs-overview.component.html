@@ -1,0 +1,17 @@
+<h3>Kurse:</h3>
+<p>Objekte anklicken, um Details zu oeffnen.</p>
+<app-kurs-item
+  *ngFor="let kurs of kurse"
+  [kurs]="kurs"
+  (deleteEvent)="deleteKurs($event)"
+  (editEvent)="editKurs($event)"
+></app-kurs-item>
+
+<h3>Kursen anlegen und updaten:</h3>
+<button (click)="toggleForm()">{{isFormOpen ? "Close Form": "Open Form"}}</button>
+<app-kurs-form
+  *ngIf="isFormOpen"
+  (createEvent)="createKurs($event)"
+  (updateEvent)="updateKurs($event)"
+  [editedKurs]="editedKurs"
+></app-kurs-form>

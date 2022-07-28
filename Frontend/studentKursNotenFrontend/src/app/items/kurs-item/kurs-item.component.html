@@ -1,0 +1,9 @@
+<div *ngIf="kurs"  style="border-style: solid; margin: 5px">
+  <div [routerLink]="['/kursDetails', kurs.id]">
+    <div>
+      {{kurs.id}} - {{kurs.kursname}}
+    </div>
+  </div>
+  <button (click)="editKurs()">Edit</button>
+  <button (click)="deleteKurs()">Delete</button>
+</div>

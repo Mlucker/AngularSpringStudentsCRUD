@@ -1,0 +1,21 @@
+<h3>Student Details</h3>
+<div *ngIf="student">
+  <div>
+    Student-ID: {{student.id}}
+  </div>
+  <div>
+    Nachname: {{student.nachname}}
+  </div>
+  <div>
+    Vorname: {{student.vorname}}
+  </div>
+  <div>
+    Geburtsdatum: {{student.geburtsdatum}}
+  </div>
+  <div *ngIf="student?.studiengang">
+    Studiengang: {{student.studiengang?.studiengang}}
+  </div>
+  <div *ngIf="!student?.studiengang">
+    Student befindet sich in keinem Studiengang!
+  </div>
+</div>

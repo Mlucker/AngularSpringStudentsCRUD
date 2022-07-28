@@ -1,0 +1,18 @@
+<h3>Student Details</h3>
+<div *ngIf="student">
+  <div>
+    Student-Id: {{student.id}}
+  </div>
+  <div>
+    Nachname: {{student.nachname}}
+  </div>
+  <div>
+    Vorname: {{student.vorname}}
+  </div>
+  <div>
+    Geburtsdatum: {{student.geburtsdatum}}
+  </div>
+  <div>
+    Spind-Id: {{student.spind?.id}}
+  </div>
+</div>

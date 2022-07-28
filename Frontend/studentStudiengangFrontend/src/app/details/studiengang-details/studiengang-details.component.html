@@ -1,0 +1,20 @@
+<h3>Studiengang Details</h3>
+<div *ngIf="studiengang">
+  <div>
+    Id: {{studiengang.id}}
+  </div>
+  <div>
+    Name: {{studiengang.studiengang}}
+  </div>
+  <div *ngIf="returnTrueIfStudiengangHasStudents() == true">
+    <h3>Studenten im Studiengang:</h3>
+    <div *ngFor="let student of studiengang.students">
+      {{student.id}}
+      {{student.nachname}}
+      {{student.vorname}}
+    </div>
+  </div>
+  <div *ngIf="returnTrueIfStudiengangHasStudents() == false">
+    Es befinden sich keine Studenten im Studiengang!
+  </div>
+</div>

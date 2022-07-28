@@ -1,0 +1,9 @@
+<div *ngIf="note"  style="border-style: solid; margin: 5px">
+  <div [routerLink]="['/noteDetails', note.id]">
+    <div>
+      Noten-Id: {{note.id}} Note: {{note.note}} Kurs-Id: {{note.kurs.id}} Student-Id: {{note.student.id}}
+    </div>
+  </div>
+  <button (click)="editNote()">Edit</button>
+  <button (click)="deleteNote()">Delete</button>
+</div>

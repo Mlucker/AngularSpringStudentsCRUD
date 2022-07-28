@@ -1,0 +1,29 @@
+<button (click)="toggleStudentJson()">{{isStudentJsonOpen ? "Close Json" : "Open Json"}}</button>
+
+<form [formGroup]="studentForm" *ngIf="studentForm" (submit)="createStudent()">
+
+  <label>Nachname:</label>
+  <input type="text" formControlName="nachname">
+
+  <label>Vorname:</label>
+  <input type="text" formControlName="vorname">
+
+  <label>Geburtsdatum:</label>
+  <input type="datetime-local" formControlName="geburtsdatum">
+
+  <div *ngIf="this.editedStudent">
+    <label>Studiengang:</label>
+    <select formControlName="studiengang">
+      <option [ngValue]="null">kein Studiengang</option>
+      <option *ngFor="let studiengang of studiengaenge" [ngValue]="studiengang">
+        {{ studiengang.id }} - {{studiengang.studiengang}}
+      </option>
+    </select>
+  </div>
+
+  <p *ngIf="isStudentJsonOpen">Form Value: {{ studentForm.value | json }}</p>
+  <p *ngIf="isStudentJsonOpen">Database Value: {{ editedStudent | json }}</p>
+
+  <button type="submit">Create Student</button>
+</form>
+

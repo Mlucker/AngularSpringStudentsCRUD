@@ -1,0 +1,78 @@
+<h3>Kurs Details</h3>
+<div *ngIf="kurs">
+
+  <div>
+    Kurs-ID: {{kurs?.id}}
+  </div>
+
+  <div>
+    Kursname: {{kurs?.kursname}}
+  </div>
+
+  <h3>Kurs in Studiengaengen angeboten:</h3>
+  <table>
+    <tr>
+      <th>
+        Studiengang-Id
+      </th>
+      <th>
+        Studiengang
+      </th>
+    </tr>
+    <tr *ngFor="let studiengang of kurs.studiengaenge">
+      <td>
+        {{studiengang.id}}
+      </td>
+      <td>
+        {{studiengang.studiengang}}
+      </td>
+    </tr>
+  </table>
+
+  <h3>Studenten im Kurs:</h3>
+  <table>
+    <tr>
+      <th>
+        Studenten-Id
+      </th>
+      <th>
+        Nachname
+      </th>
+      <th>
+        Vorname
+      </th>
+    </tr>
+    <tr *ngFor="let student of kurs.students">
+      <td>
+        {{student.id}}
+      </td>
+      <td>
+        {{student.nachname}}
+      </td>
+      <td>
+        {{student.vorname}}
+      </td>
+    </tr>
+  </table>
+
+  <h3>Noten im Kurs:</h3>
+  <table>
+    <tr>
+      <th>
+        Note
+      </th>
+      <th>
+        Student
+      </th>
+    </tr>
+    <tr *ngFor="let note of kurs.noten">
+      <td>
+        {{note.note}}
+      </td>
+      <td>
+        {{note.student.nachname}} {{note.student.vorname}}
+      </td>
+    </tr>
+  </table>
+
+</div>

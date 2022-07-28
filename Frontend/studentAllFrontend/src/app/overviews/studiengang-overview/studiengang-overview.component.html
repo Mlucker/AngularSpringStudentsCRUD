@@ -1,0 +1,17 @@
+<h3>Studiengaenge:</h3>
+<p>Objekte anklicken, um Details zu oeffnen.</p>
+<app-studiengang-item
+  *ngFor="let studiengang of studiengaenge"
+  [studiengang]="studiengang"
+  (deleteEvent)="deleteStudiengang($event)"
+  (editEvent)="editStudiengang($event)"
+></app-studiengang-item>
+
+<h3>Studiengaenge anlegen und updaten:</h3>
+<button (click)="toggleForm()">{{isFormOpen ? "Close Form": "Open Form"}}</button>
+<app-studiengang-form
+  *ngIf="isFormOpen"
+  (createEvent)="createStudiengang($event)"
+  (updateEvent)="updateStudiengang($event)"
+  [editedStudiengang]="editedStudiengang"
+></app-studiengang-form>

@@ -1,0 +1,80 @@
+<h3>Student Details</h3>
+<div *ngIf="student">
+
+  <div>
+    Student-ID: {{student.id}}
+  </div>
+
+  <div>
+    Nachname: {{student.nachname}}
+  </div>
+
+  <div>
+    Vorname: {{student.vorname}}
+  </div>
+
+  <div>
+    Geburtsdatum: {{student.geburtsdatum}}
+  </div>
+
+  <div *ngIf="student?.studiengang">
+    Studiengang: {{student.studiengang?.studiengang}}
+  </div>
+  <div *ngIf="!student?.studiengang">
+    Student befindet sich in keinem Studiengang!
+  </div>
+
+  <h4>Student befindet sich in Kursen:</h4>
+  <table>
+    <tr>
+      <th>
+        Kurs-Id
+      </th>
+      <th>
+        Kurs
+      </th>
+    </tr>
+    <tr *ngFor="let kurs of student.kurse">
+      <td>
+        {{kurs.id}}
+      </td>
+      <td>
+        {{kurs.kursname}}
+      </td>
+    </tr>
+  </table>
+
+  <h4>Student hat Noten:</h4>
+  <table>
+    <tr>
+      <th>
+        Note
+      </th>
+      <th>
+        Kurs-Id:
+      </th>
+      <th>
+        Kurs
+      </th>
+    </tr>
+    <tr *ngFor="let note of student.noten">
+      <td>
+        {{note.note}}
+      </td>
+      <td>
+        {{note.kurs.id}}
+      </td>
+      <td>
+        {{note.kurs.kursname}}
+      </td>
+    </tr>
+  </table>
+
+  <h4>Student hat Spind mit Nummer:</h4>
+  <div>
+    {{student.spind?.id}}
+  </div>
+
+</div>
+
+

@@ -1,0 +1,16 @@
+<h3>Spinde:</h3>
+<app-spind-item
+  *ngFor="let spind of spinde"
+  [spind]="spind"
+  (deleteEvent)="deleteSpind($event)"
+  (editEvent)="editSpind($event)"
+></app-spind-item>
+
+<h3>Spinde anlegen und updaten:</h3>
+<button (click)="toggleForm()">{{isFormOpen ? "Close Form": "Open Form"}}</button>
+<app-spind-form
+  *ngIf="isFormOpen"
+  (createEvent)="createSpind($event)"
+  (updateEvent)="updateSpind($event)"
+  [editedSpind]="editedSpind"
+></app-spind-form>

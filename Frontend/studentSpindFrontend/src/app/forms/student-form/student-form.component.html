@@ -1,0 +1,45 @@
+<button (click)="toggleStudentJson()">{{isStudentJsonOpen ? "Close Json" : "Open Json"}}</button>
+
+<form [formGroup]="studentForm" *ngIf="studentForm" (submit)="createStudent()">
+
+  <h3>Freie Spinde:</h3>
+  <p *ngIf="createUnusedSpindeArray().length == 0">Alle Spinde sind belegt!</p>
+  <div *ngFor="let pipedSpind of createUnusedSpindeArray()">
+    {{pipedSpind.id}}
+  </div>
+
+  <h3>Studenten anlegen und bearbeiten:</h3>
+  <div>
+    <label>Nachname:</label>
+    <input type="text" formControlName="nachname">
+  </div>
+
+  <div>
+    <label>Vorname:</label>
+    <input type="text" formControlName="vorname">
+  </div>
+
+  <div>
+    <label>Geburtsdatum:</label>
+    <input type="datetime-local" formControlName="geburtsdatum">
+  </div>
+
+  <div *ngIf="this.editedStudent">
+    <label>Spind:</label>
+    <select formControlName="spind">
+      <option [ngValue]="null">kein Spind</option>
+      <option *ngFor="let spind of createUnusedSpindeArray()" [ngValue]="spind">
+        {{ spind.id }}
+      </option>
+    </select>
+  </div>
+
+  <p *ngIf="isStudentJsonOpen">Form Value: {{ studentForm.value | json }}</p>
+  <p *ngIf="isStudentJsonOpen">Database Value: {{ this.editedStudent | json }}</p>
+
+  <button type="submit">Create/Update Student</button>
+</form>
+
+
+
+

@@ -1,0 +1,32 @@
+<h3>Kurs Details</h3>
+<div *ngIf="kurs">
+  <div>
+    Student-ID: {{kurs?.id}}
+  </div>
+  <div>
+    Kursname: {{kurs?.kursname}}
+  </div>
+  <h3>Studenten im Kurs:</h3>
+  <div *ngFor="let student of kurs.students">
+    {{student.id}} {{student.nachname}} {{student.vorname}}
+  </div>
+  <h3>Noten im Kurs:</h3>
+  <table>
+    <tr>
+      <th>
+        Note
+      </th>
+      <th>
+        Student
+      </th>
+    </tr>
+    <tr *ngFor="let note of kurs.noten">
+      <td>
+        {{note.note}}
+      </td>
+      <td>
+        {{note.student.nachname}} {{note.student.vorname}}
+      </td>
+    </tr>
+  </table>
+</div>

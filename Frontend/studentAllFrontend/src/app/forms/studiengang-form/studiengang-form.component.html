@@ -1,0 +1,25 @@
+<button (click)="toggleStudiengangJson()">{{isStudiengangJsonOpen ? "Close Json" : "Open Json"}}</button>
+
+<form [formGroup]="studiengangForm" *ngIf="studiengangForm" (submit)="createStudiengang()">
+
+  <div>
+    <label>Studiengang:</label>
+    <input type="text" formControlName="studiengang">
+  </div>
+
+  <div *ngIf="this.editedStudiengang">
+    <label>Kurse:</label>
+    <div *ngFor="let kurs of kurse; let i=index">
+      <label>
+        <input type="checkbox" [value]="kurs.id" (change)="onCheckboxChange($event)"
+               [checked]="createAndReturnKurseIDArray().indexOf(kurs.id) > -1">
+        {{kurs.id}} - {{kurs.kursname}}
+      </label>
+    </div>
+  </div>
+
+  <p *ngIf="isStudiengangJsonOpen">Form Value: {{ studiengangForm?.value | json }}</p>
+  <p *ngIf="isStudiengangJsonOpen">Database Value: {{ editedStudiengang | json }}</p>
+
+  <button type="submit">Create/Update Studiengang</button>
+</form>

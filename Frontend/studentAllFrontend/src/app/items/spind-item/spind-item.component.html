@@ -1,0 +1,13 @@
+<div *ngIf="spind" style="border-style: solid; margin: 5px">
+  <div [routerLink]="['/spindDetails', spind.id]">
+    <div>
+      Spind Id:{{spind.id}} Spindraum: {{spind.spindraum}}
+    </div>
+    <div *ngIf="spind.student">
+      Student: {{spind.student?.id}} {{spind.student?.nachname}} {{spind.student?.vorname}}
+    </div>
+  </div>
+
+  <button (click)="editSpind()">Edit</button>
+  <button (click)="deleteSpind()">Delete</button>
+</div>

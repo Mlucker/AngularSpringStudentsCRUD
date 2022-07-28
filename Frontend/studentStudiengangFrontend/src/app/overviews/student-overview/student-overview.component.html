@@ -1,0 +1,17 @@
+<h3>Studenten:</h3>
+<p>Objekte anklicken, um Details zu oeffnen.</p>
+<app-student-item
+  *ngFor="let student of students"
+  [student]="student"
+  (deleteEvent)="deleteStudent($event)"
+  (editEvent)="editStudent($event)"
+></app-student-item>
+
+<h3>Studenten anlegen und updaten:</h3>
+<button (click)="toggleForm()">{{isFormOpen ? "Close Form": "Open Form"}}</button>
+<app-student-form
+  *ngIf="isFormOpen"
+  (createEvent)="createStudent($event)"
+  (updateEvent)="updateStudent($event)"
+  [editedStudent]="editedStudent"
+></app-student-form>
